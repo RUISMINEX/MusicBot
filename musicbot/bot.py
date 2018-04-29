@@ -51,7 +51,7 @@ log = logging.getLogger(__name__)
 class MusicBot(discord.Client):
     def __init__(self, config_file=None, perms_file=None):
         try:
-            sys.stdout.write("\x1b]2;MusicBot {}\x07".format(BOTVERSION))
+            sys.stdout.write("\x1b]2;SGGMUSIC {}\x07".format(BOTVERSION))
         except:
             pass
         
@@ -81,7 +81,7 @@ class MusicBot(discord.Client):
 
         self._setup_logging()
 
-        log.info('Starting MusicBot {}'.format(BOTVERSION))
+        log.info('Starting SGGMUSIC {}'.format(BOTVERSION))
 
         if not self.autoplaylist:
             log.warning("Autoplaylist is empty, disabling.")
@@ -124,7 +124,7 @@ class MusicBot(discord.Client):
 
         super().__init__()
         self.aiosession = aiohttp.ClientSession(loop=self.loop)
-        self.http.user_agent += ' MusicBot/%s' % BOTVERSION
+        self.http.user_agent += ' SGGMUSIC/%s' % BOTVERSION
 
     # TODO: Add some sort of `denied` argument for a message to send when someone else tries to use it
     def owner_only(func):
@@ -1224,7 +1224,7 @@ class MusicBot(discord.Client):
         e = discord.Embed()
         e.colour = 7506394
         e.set_footer(text='Just-Some-Bots/MusicBot ({})'.format(BOTVERSION), icon_url='https://i.imgur.com/gFHBoZA.png')
-        e.set_author(name=self.user.name, url='https://github.com/Just-Some-Bots/MusicBot', icon_url=self.user.avatar_url)
+        e.set_author(name=self.user.name, url='http://eu.skygrand.tk', icon_url=self.user.avatar_url)
         return e
 
     async def cmd_resetplaylist(self, player, channel):
@@ -1275,7 +1275,7 @@ class MusicBot(discord.Client):
 
         desc = '```\n' + ', '.join(self.commands) + '\n```\n' + self.str.get(
             'cmd-help-response', 'For information about a particular command, run `{}help [command]`\n'
-                                 'For further help, see https://just-some-bots.github.io/MusicBot/').format(prefix)
+                                 '').format(prefix)
         if not self.is_all:
             desc += self.str.get('cmd-help-all', '\nOnly showing commands you can use, for a list of all commands, run `{}help all`').format(prefix)
 
